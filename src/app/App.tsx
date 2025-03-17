@@ -3,10 +3,13 @@ import { Routes,Route } from 'react-router-dom';
 import { AuthLayout } from '../widgets/auth-layout';
 import { SignIn,SignUp,NotFoundPage } from '../pages';
 import { Layout } from '../shared/components/layout';
+import { ToastContainer } from 'react-toastify';
 
 export const App: React.FC = () => {
   return (
     <>
+        <ToastContainer position="top-right" autoClose={3000} />
+
       <Routes>
         
         {/* Main */}

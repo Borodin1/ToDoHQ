@@ -2,7 +2,10 @@
 import { Link } from "react-router-dom";
 
 //Components
-import { Input,Button } from "../../shared/components";
+import { Input, Button } from "../../shared/components";
+
+//hooks
+import { useSignUp } from "./useSignUp";
 
 //Icons
 import { FaUserEdit } from "react-icons/fa";
@@ -11,45 +14,60 @@ import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 
+
 export const SignUpForm: React.FC = () => {
+  const { onSubmit, register, handleSubmit, watch, errors } = useSignUp();
   return (
-    <div className="flex flex-col justify-around w-auto">
+    <div className="flex flex-col justify-around w-auto h-auto">
       <h1 className="font-bold text-4xl">Sign Up</h1>
       <div className="flex flex-col gap-4 max-[850px]:items-center">
-        <div className="flex flex-col gap-3 max-[850px]:items-center">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-3 max-[850px]:items-center">
           <Input
-            name="firstName"
+            {...register("firstName", { required: "First name is required" })}
             placeholder="Enter First Name"
             icon={FaUserEdit}
+            error={errors.firstName?.message}
           />
-
           <Input
-            name="lastName"
+            {...register("lastName", { required: "Last name is required" })}
             placeholder="Enter Last Name"
             icon={FaUserEdit}
+            error={errors.lastName?.message}
           />
-
-          <Input name="userName" placeholder="Enter Username" icon={FaUser} />
-
-          <Input name="email" placeholder="Enter Email" icon={IoMdMail} />
-
           <Input
-            name="password"
+            {...register("username", { required: "Username is required" })}
+            placeholder="Enter Username"
+            icon={FaUser}
+            error={errors.username?.message}
+          />
+          <Input
+            {...register("email", { required: "Email is required" })}
+            placeholder="Enter Email"
+            icon={IoMdMail}
+            error={errors.email?.message}
+          />
+          <Input
+            {...register("password", { required: "Password is required" })}
             placeholder="Enter Password"
             type="password"
             icon={FaLock}
-            className="pl-8  h-[60px] rounded-[5px] border-1 max-[1450px]:w-[500px] max-[1150px]:w-[350px] max-[400px]:w-[250px]"
+            error={errors.password?.message}
           />
-
           <Input
-            name="confirmedPassword"
+            {...register("confirmPassword", {
+              required: "Confirm your password",
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
             placeholder="Confirm Password"
             type="password"
             icon={FaUnlockKeyhole}
-            className="pl-8  h-[60px] rounded-[5px] border-1 max-[1450px]:w-[500px] max-[1150px]:w-[350px] max-[400px]:w-[250px]"
+            error={errors.confirmPassword?.message}
           />
           <Button title="Register" />
-        </div>
+        </form>
         <p className="flex gap-2">
           Already have account?
           <Link to="/sign-in" className="text-[#008BD9]">

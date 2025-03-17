@@ -7,9 +7,9 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({ className, title }) => {
-  console.log(typeof title === "string")
   return (
     <button
+    type='submit'
       className={
         className
           ? className

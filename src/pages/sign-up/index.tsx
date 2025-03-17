@@ -3,6 +3,7 @@ import { SignUpForm } from '../../features/sign-up';
 
 
 export const SignUp: React.FC = () => {
+  
   return (
     <>
       <div className="flex items-center mr-24 max-[1150px]:mr-0">
