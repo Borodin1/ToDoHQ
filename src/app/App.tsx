@@ -4,12 +4,14 @@ import { AuthLayout } from '../widgets/auth-layout';
 import { SignIn,SignUp,NotFoundPage } from '../pages';
 import { Layout } from '../shared/components/layout';
 import { ToastContainer } from 'react-toastify';
+import { ProtectedAuth } from '../features/protected-auth';
 
 export const App: React.FC = () => {
+  
   return (
     <>
         <ToastContainer position="top-right" autoClose={3000} />
-
+<ProtectedAuth>
       <Routes>
         
         {/* Main */}
@@ -28,6 +30,7 @@ export const App: React.FC = () => {
 
 
       </Routes>
+      </ProtectedAuth>
     </>
   );
 };

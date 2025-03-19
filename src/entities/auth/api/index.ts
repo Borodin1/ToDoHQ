@@ -52,6 +52,8 @@ export const fetchAuth = createAsyncThunk(
       );
       const data = response.data;
       localStorage.setItem("token", data.jwt);
+      localStorage.setItem('user',JSON.stringify(data.user))
+      
       return data;
     } catch (error: unknown) {
       if (isAxiosError(error)) {
