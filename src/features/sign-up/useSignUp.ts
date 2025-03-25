@@ -31,19 +31,11 @@ export const useSignUp=()=>{
           if (fetchAuth.fulfilled.match(result)) {
             toast.success("Registration successful! 🎉");
             navigate("/");
-          } else {
-            setError("root", {
-              type: "manual",
-              message:
-                (result.payload as { message?: string })?.message ??
-                "Registration failed.",
-            });
-            toast.error('Registration failed.❌')
           }
         } catch {
           setError("root", {
             type: "manual",
-            message: "An unexpected error occured.",
+            message: "An unexpected error occurred.",
           });
           toast.error("An unexpected error occurred. 🚨");
         }

@@ -16,6 +16,7 @@ export interface IAuthenticate {
   firstName?: string;
   lastName?: string;
   email?: string;
+  identifier?:string
   password?: string;
   confirmPassword?: string;
 }

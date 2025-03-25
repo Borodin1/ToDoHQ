@@ -12,36 +12,17 @@ export const fetchAuth = createAsyncThunk(
         username,
         firstName,
         lastName,
+        identifier,
         email,
         password,
         confirmPassword,
       } = authData;
       const endpoint = type === "register" ? "register" : "login";
 
-      if (type === "login") {
-        if (!password || (!email && !username)) {
-          throw new Error("Please provide either an email or a username along with a password.");
-        }
-      } else if (type === "register") {
-        if (
-          !firstName ||
-          !lastName ||
-          !username ||
-          !email ||
-          !password ||
-          !confirmPassword
-        ) {
-          throw new Error("All fields are required.");
-        }
-        if (password !== confirmPassword) {
-          throw new Error("Passwords do not match");
-        }
-      }
-
       const body =
         type === "register"
           ? { firstName, lastName, username, email, password,confirmPassword }
-          : { password, ...(email ? { email } : { username }) };
+          : { password, identifier };
 
       const response = await axios.post(
         `${url}${endpoint}`,

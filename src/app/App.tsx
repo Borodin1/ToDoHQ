@@ -1,36 +1,33 @@
 import React from "react";
-import { Routes,Route } from 'react-router-dom';
-import { AuthLayout } from '../widgets/auth-layout';
-import { SignIn,SignUp,NotFoundPage } from '../pages';
-import { Layout } from '../shared/components/layout';
-import { ToastContainer } from 'react-toastify';
-import { ProtectedAuth } from '../features/protected-auth';
+import { Routes, Route } from "react-router-dom";
+import { AuthLayout } from "../widgets/auth-layout";
+import { SignIn, SignUp, NotFoundPage } from "../pages";
+import { Layout } from "../shared/components/layout";
+import { ToastContainer } from "react-toastify";
+import { ProtectedAuth } from "../features/protected-auth";
 
 export const App: React.FC = () => {
-  
   return (
     <>
-        <ToastContainer position="top-right" autoClose={3000} />
-<ProtectedAuth>
+      <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
-        
         {/* Main */}
-        <Route  element={<Layout/>}>
-
-        {/* Not found page */}
-        <Route path='*'element={<NotFoundPage/>}/>
-        
+        <Route
+          element={
+            <ProtectedAuth>
+              <Layout />
+            </ProtectedAuth>
+          }>
+          {/* Not found page */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-    
+
         {/* Authentication */}
-        <Route element={<AuthLayout/>}>
-        <Route path='/sign-in'  element={<SignIn/>}/>
-        <Route path='/sign-up' element={<SignUp/>}/>
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Route>
-
-
       </Routes>
-      </ProtectedAuth>
     </>
   );
 };
