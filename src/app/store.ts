@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from '../entities/auth/model/authSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { todosReducer } from '../entities/todos/model/todosSlice';
 
 export const store = configureStore({
     reducer:{
-        auth:authReducer
+        auth:authReducer,
+        todos:todosReducer
     }
 })
 

@@ -25,7 +25,7 @@ export const fetchAuth = createAsyncThunk(
           : { password, identifier };
 
       const response = await axios.post(
-        `${url}${endpoint}`,
+        `${url}/auth/${endpoint}`,
         body,
         {
           headers: { "Content-Type": "application/json" },

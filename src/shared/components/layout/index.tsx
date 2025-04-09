@@ -10,7 +10,7 @@ export const Layout: React.FC = () => {
       <Header/>
       <div className='flex'>
         <Navbar/>
-        <div className='flex items-center w-full justify-center'>
+        <div className='flex-1 flex flex-col overflow-auto'>
         <Outlet/>
         </div>
       </div>

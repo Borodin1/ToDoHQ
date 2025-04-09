@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({ className, title }) => {
       className={
         className
           ? className
-          : "w-[129px] h-[60px] bg-[#FF9090] rounded-[5px] text-white cursor-pointer"
+          : "w-[129px] h-[60px] bg-[#FF9090] rounded-[5px] text-white cursor-pointer pointer-events-auto"
       }>
       {typeof title === "string" ? title : React.createElement(title)}
     </button>
