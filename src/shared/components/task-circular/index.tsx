@@ -21,8 +21,8 @@ export const TaskCircular: React.FC<ITaskCircular> = ({
           pathColor: `${circularColor}`,
           trailColor: "#e5e7eb",
           textSize: "20px",
+          pathTransitionDuration: 1,
         })}
-        className="font-medium"
       />
       <div className="absolute inset-0 flex items-center justify-center text-black font-semibold text-sm">
         {percentHelper(completed)}%
