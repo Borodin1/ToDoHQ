@@ -13,7 +13,6 @@ export const fetchTodos = createAsyncThunk(
                 }}
             )
             const data = response.data
-            console.log(data)
             localStorage.setItem('todos',JSON.stringify(data));
 
             return data;
