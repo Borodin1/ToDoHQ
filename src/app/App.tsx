@@ -5,6 +5,7 @@ import { SignIn, SignUp, NotFoundPage, Dashboard } from "../pages";
 import { Layout } from "../shared/components/layout";
 import { ToastContainer } from "react-toastify";
 import { ProtectedAuth } from "../features/protected-auth";
+import { TaskId } from '../pages/task-id';
 
 export const App: React.FC = () => {
   return (
@@ -20,6 +21,8 @@ export const App: React.FC = () => {
           }>
             {/* Dashboard */}
           <Route index element={<Dashboard/>}/>
+
+          <Route path='task/:taskId' element={<TaskId/>}/>
 
           {/* Not found page */}
           <Route path="*" element={<NotFoundPage />} />

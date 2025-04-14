@@ -28,7 +28,7 @@ export const TaskBoard: React.FC<IProps> = ({ todos,formattedDate}) => {
       </div>
       <div className="flex-1">
         <div className="flex text-center justify-center">
-          {todos ? todos.map((todo)=><TaskList todo={todo} formattedDate={formattedDate}/>) : "You don't have any tasks."}
+          {todos ? todos.map((todo)=><TaskList todo={todo} formattedDate={formattedDate} key={todo.id}/>) : "You don't have any tasks."}
         </div>
       </div>
     </div>
