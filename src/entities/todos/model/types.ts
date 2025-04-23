@@ -2,6 +2,7 @@ export interface ITodoInitialState {
   todos: ITodo[];
   isLoading:boolean;
   isError:boolean;
+  isOpenModal:boolean;
 }
 
 export interface ITodo {

@@ -6,6 +6,7 @@ import { formattedDate } from '../../shared/lib';
 export const useTaskOverview = () => {
   const dispatch = useAppDispatch();
   const todos = useAppSelector((state) => state.todos.todos);
+  const isOpenModal = useAppSelector((state)=>state.todos.isOpenModal)
 
   
 
@@ -20,5 +21,5 @@ export const useTaskOverview = () => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
-  return { todos, formattedDate, completed, percentHelper, notCompleted };
+  return { todos, formattedDate, completed, percentHelper, notCompleted,isOpenModal };
 };

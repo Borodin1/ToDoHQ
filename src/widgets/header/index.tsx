@@ -19,17 +19,18 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="flex flex-row items-center">
-        <div className="relative max-[500px]:hidden">
-          <Input
-            className="h-9 w-[695px] rounded-1xl p-1.5 pr-12 bg-[#f5f8ff] shadow-lg max-[1100px]:w-[500px] max-[770px]:w-[350px]"
-            placeholder="Search your task here..."
-          />
-          <Button
-            className="absolute right-[1.1px] w-[36px] h-[36px] bg-[#FF9090] rounded-[5px] place-items-center text-white cursor-pointer text-[20px]"
-            title={CiSearch}
-          />
-        </div>
-      </div>
+  <div className="relative max-[500px]:hidden">
+    <Input
+      className="h-9 w-[695px] rounded-1xl p-1.5 pr-12 bg-[#f5f8ff] shadow-lg max-[1100px]:w-[500px] max-[770px]:w-[350px]"
+      placeholder="Search your task here..."
+    />
+    <Button
+      className="absolute right-2 top-1/2 -translate-y-[14px] w-[36px] h-9 bg-[#FF9090] rounded-[8px] grid place-items-center text-white cursor-pointer text-[20px]"
+      title={CiSearch}
+    />
+  </div>
+</div>
+
 
       <div className="flex flex-row items-center gap-[9px] max-[600px]:hidden">
         <Button
