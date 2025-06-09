@@ -21,6 +21,7 @@ export const useSignUp=()=>{
       
     
       const onSubmit:SubmitHandler<SignUpFormData> = async (data: SignUpFormData) => {
+        console.log(data)
         if (data.password !== data.confirmPassword) {
           setError("confirmPassword", { message: "Passwords do not match" });
           toast.error("Password do not match!")

@@ -4,12 +4,15 @@ import { IconType } from "react-icons";
 interface ButtonProps {
   className?: string;
   title: string | IconType;
+  type?: "button" | "submit" | "reset"; // ✏️ добавили type
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void; // ✏️ сделали onClick необязательным
 }
 
-export const Button: React.FC<ButtonProps> = ({ className, title }) => {
+export const Button: React.FC<ButtonProps> = ({ className, title, type = "button", onClick }) => {
   return (
     <button
-    type='submit'
+      type={type}
+      onClick={onClick}
       className={
         className
           ? className

@@ -2,11 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IAuthState } from "./types";
 import { fetchAuth } from "../api";
 
-const user = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user") as string)
-  : null;
+const rawUser = localStorage.getItem("user");
 
-
+let user = null;
+try {
+  if (rawUser && rawUser !== "undefined") {
+    user = JSON.parse(rawUser);
+  }
+} catch (error) {
+  console.error("Ошибка при парсинге user из localStorage:", error);
+}
 const initialState: IAuthState = {
   token: localStorage?.getItem("token") || null,
   user: {

@@ -27,24 +27,28 @@ export const SignUpForm: React.FC = () => {
           <Input
             {...register("firstName", { required: "First name is required" })}
             placeholder="Enter First Name"
+            name='firstName'
             icon={FaUserEdit}
             error={errors.firstName?.message}
           />
           <Input
             {...register("lastName", { required: "Last name is required" })}
             placeholder="Enter Last Name"
+            name='lastName'
             icon={FaUserEdit}
             error={errors.lastName?.message}
           />
           <Input
             {...register("username", { required: "Username is required" })}
             placeholder="Enter Username"
+            name='username'
             icon={FaUser}
             error={errors.username?.message}
           />
           <Input
             {...register("email", { required: "Email is required" })}
             placeholder="Enter Email"
+            name='email'
             icon={IoMdMail}
             error={errors.email?.message}
           />
@@ -52,6 +56,7 @@ export const SignUpForm: React.FC = () => {
             {...register("password", { required: "Password is required" })}
             placeholder="Enter Password"
             type="password"
+            name='password'
             icon={FaLock}
             error={errors.password?.message}
           />
@@ -66,7 +71,7 @@ export const SignUpForm: React.FC = () => {
             icon={FaUnlockKeyhole}
             error={errors.confirmPassword?.message}
           />
-          <Button title="Register" />
+          <Button title="Register" type='submit' />
         </form>
         <p className="flex gap-2">
           Already have account?

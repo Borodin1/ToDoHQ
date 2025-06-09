@@ -37,7 +37,7 @@ export const SignInForm: React.FC = () => {
             placeholder="Enter Password"
             error={errors.password?.message}
           />
-          <Button title="Login" />
+          <Button title="Login" type='submit' />
         </form>
         <p className="mt-16 max-[500px]:mt-4">
           Don't have an account?{" "}

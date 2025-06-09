@@ -22,7 +22,7 @@ export const App: React.FC = () => {
             {/* Dashboard */}
           <Route index element={<Dashboard/>}/>
 
-          <Route path='task/:taskId' element={<TaskId/>}/>
+          <Route path='tasks/task/:taskId' element={<TaskId/>}/>
 
           {/* Not found page */}
           <Route path="*" element={<NotFoundPage />} />
