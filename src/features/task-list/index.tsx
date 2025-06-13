@@ -3,12 +3,16 @@ import { AdditionInfo } from "../../shared/components";
 import { ITodo } from "../../entities/todos/model/types";
 import { Link } from "react-router-dom";
 import { FaEdit, FaExclamation, FaTrash } from "react-icons/fa";
+import { TodoModal } from "../todo-modal";
 
 interface ITaskList {
   todo: ITodo;
   formattedDate: (date: string) => string;
   variant?: "list" | "detail";
-  handleDeleteTask:(id:number)=> void
+  handleDeleteTask?: (id: number) => void;
+  isOpenModal?: boolean;
+  handleIsOpen?: () => void;
+  handleCompleteTask?: (id:number,todo: ITodo) => void;
 }
 
 export const TaskList: React.FC<ITaskList> = ({
@@ -16,6 +20,9 @@ export const TaskList: React.FC<ITaskList> = ({
   formattedDate,
   handleDeleteTask,
   variant = "list",
+  isOpenModal,
+  handleIsOpen,
+  handleCompleteTask,
 }) => {
   if (variant === "list") {
     return (
@@ -88,19 +95,22 @@ export const TaskList: React.FC<ITaskList> = ({
             className="border-2 bg-[#FF6767] rounded-lg p-1.5 cursor-pointer"
             size={35}
             color="white"
-            onClick={()=>handleDeleteTask(todo.id)}
+            onClick={() => handleDeleteTask && handleDeleteTask(todo.id)}
           />
           <FaEdit
             className="border-2 bg-[#FF6767] rounded-lg p-1.5 cursor-pointer"
             size={35}
             color="white"
+            onClick={() => handleIsOpen && handleIsOpen()}
           />
           <FaExclamation
             className="border-2 bg-[#FF6767] rounded-lg p-1.5 cursor-pointer"
             size={35}
             color="white"
+            onClick={() => handleCompleteTask && handleCompleteTask(todo.id,todo)}
           />
         </div>
+        {isOpenModal && <TodoModal mode="edit" task={todo} />}
       </div>
     );
   }

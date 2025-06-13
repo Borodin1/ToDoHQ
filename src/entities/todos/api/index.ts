@@ -56,6 +56,36 @@ export const createTask = createAsyncThunk(
   }
 );
 
+export const updateTask = createAsyncThunk(
+  "todos/updateTask",
+  async ({ id, todoData }: { id: number; todoData: ITodoFetch }, thunkAPI) => {
+    try {
+      const response = await axios.put(
+        `${url}/todos/${id}`,
+        { data:todoData },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log('data:',todoData)
+      console.log('response.data',response.data)
+      return response.data;
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        return thunkAPI.rejectWithValue({ message: error.message });
+      } else {
+        return thunkAPI.rejectWithValue({
+          message: "An unknown error occurred.",
+        });
+      }
+    }
+  }
+);
+
+
 export const deleteTask = createAsyncThunk(
   "todos/deleteTask",
   async (id: number, thunkAPI) => {

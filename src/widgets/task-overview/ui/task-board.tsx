@@ -38,7 +38,7 @@ export const TaskBoard: React.FC<IProps> = ({
         </div>
       </div>
       <div className="">
-        <div className="max-h-[500px] flex text-center flex-col gap-2 items-center overflow-auto">
+        <div className="max-h-[750px] flex text-center flex-col gap-2 items-center overflow-auto">
           {todos && todos.length > 0 ? (
             [...todos]
               .sort(

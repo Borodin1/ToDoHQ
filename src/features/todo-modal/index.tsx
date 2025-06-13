@@ -5,7 +5,7 @@ import { Modal } from "../../shared/components/Modal";
 import { isOpen } from "../../entities/todos/model/todosSlice";
 import { Button, Input } from "../../shared/components";
 // import { PickerDate } from "../../shared/components/PickerDate";
-import { createTask } from "../../entities/todos/api/index";
+import { createTask, updateTask } from "../../entities/todos/api/index";
 import { useAppDispatch } from "../../app/store";
 import { ITodoFetch } from "../../entities/todos/model/types";
 
@@ -16,6 +16,7 @@ interface ITodoModal {
     title: string;
     description: string;
     priority: string;
+    completed?: boolean;
   };
 }
 
@@ -29,6 +30,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
       reset({
         title: task.title || "",
         description: task.description || "",
+        completed: task.completed || false,
         priority: ["extreme", "moderate", "low"].includes(task.priority)
           ? (task.priority as "extreme" | "moderate" | "low")
           : "low",
@@ -37,17 +39,23 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
   }, [mode, task, reset]);
 
   const onSubmit = (data: ITodoFetch) => {
-    // if (mode === "edit" && task?.id) {
-    //   dispatch(updateTask({ id: task.id, data }));
-    // } else {
-
-    const newData = { ...data, completed: false };
-    dispatch(createTask(newData));
-    // }
+    if (mode === "edit" && task?.id) {
+      const updateData = {
+        title: data.title,
+        description: data.description,
+        priority: data.priority,
+        completed: data.completed !== undefined ? data.completed : task.completed || false
+      };
+      dispatch(updateTask({ id: task.id, todoData: updateData }));
+    } else {
+      const newData = { ...data, completed: false };
+      dispatch(createTask(newData));
+    }
     console.log(data);
     dispatch(isOpen());
     reset();
   };
+
 
   return (
     <Modal onClose={() => dispatch(isOpen())}>
@@ -112,7 +120,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
               title="Done"
               type="submit"
               className="w-[90px] h-[34px] my-3 bg-[#FF9090] rounded-[5px] text-white"
-              // onClick={handleSubmit(onSubmit)}
+              onClick={handleSubmit(onSubmit)}
             />
           </form>
         </div>

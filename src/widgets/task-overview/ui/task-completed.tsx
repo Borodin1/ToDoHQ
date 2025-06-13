@@ -16,12 +16,12 @@ export const TaskCompleted: React.FC = () => {
           Completed Tasks
         </h3>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-col overflow-auto gap-2 max-h-[500px]">
         {todos.filter((todo) => todo.completed).length > 0 ? (
           todos
             .filter((todo) => todo.completed)
             .map((todo) => (
-              <TaskList todo={todo} formattedDate={formattedDate} />
+              <TaskList key={todo.id} todo={todo} formattedDate={formattedDate} />
             ))
         ) : (
           <div className="flex flex-col items-center justify-center h-[200px] w-full">
