@@ -48,6 +48,7 @@ export const TaskBoard: React.FC<IProps> = ({
               )
               .map((todo) => (
                 <TaskList
+                basePath='/tasks'
                   todo={todo}
                   formattedDate={formattedDate}
                   key={todo.id}

@@ -6,6 +6,8 @@ import { Layout } from "../shared/components/layout";
 import { ToastContainer } from "react-toastify";
 import { ProtectedAuth } from "../features/protected-auth";
 import { TaskId } from '../pages/task-id';
+import { MyTasks } from '../pages/my-tasks';
+import { SelectedTask } from '../features/selected-task';
 
 export const App: React.FC = () => {
   return (
@@ -22,8 +24,14 @@ export const App: React.FC = () => {
             {/* Dashboard */}
           <Route index element={<Dashboard/>}/>
 
+          <Route path='/my-tasks' element={<MyTasks/>}>
+            <Route path='task/:taskId' element={<SelectedTask/>}/>
+          </Route>
+
+
           <Route path='tasks/task/:taskId' element={<TaskId/>}/>
 
+        
           {/* Not found page */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>

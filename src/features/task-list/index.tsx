@@ -12,6 +12,7 @@ interface ITaskList {
   handleDeleteTask?: (id: number) => void;
   isOpenModal?: boolean;
   handleIsOpen?: () => void;
+  basePath: string
   handleCompleteTask?: (id: number, todo: ITodo) => void;
 }
 
@@ -22,6 +23,7 @@ export const TaskList: React.FC<ITaskList> = ({
   variant = "list",
   isOpenModal,
   handleIsOpen,
+  basePath,
   handleCompleteTask,
 }) => {
   if (variant === "list") {
@@ -38,7 +40,7 @@ export const TaskList: React.FC<ITaskList> = ({
           </div>
         </div>
         <div className="flex flex-col justify-between text-center max-lg:justify-center">
-          <Link to={`tasks/task/${todo.id}`}>
+          <Link to={`${basePath}/task/${todo.id}`}>
             <div className="h-[120px] w-[250px] flex justify-between gap-5 items-center max-lg:w-[150px] max-lg:justify-center">
               <div className="flex flex-col justify-around max-lg:justify-center">
                 <h3 className="text-base font-semibold ">{todo.title}</h3>
