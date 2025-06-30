@@ -14,21 +14,23 @@ export const TaskCircular: React.FC<ITaskCircular> = ({
   description,
 }) => {
   return (
-    <div className="relative w-[150px] h-[150px]">
-      <CircularProgressbar
-        value={percentHelper(completed)}
-        styles={buildStyles({
-          pathColor: `${circularColor}`,
-          trailColor: "#e5e7eb",
-          textSize: "20px",
-          pathTransitionDuration: 1,
-        })}
-      />
+    <div className="relative w-[150px] h-[150px] max-sm:w-[100px] max-sm:h-[100px]">
+      <div className='max-sm:hidden'>
+        <CircularProgressbar
+          value={percentHelper(completed)}
+          styles={buildStyles({
+            pathColor: `${circularColor}`,
+            trailColor: "#e5e7eb",
+            textSize: "20px",
+            pathTransitionDuration: 1,
+          })}
+        />
+      </div>
       <div className="absolute inset-0 flex items-center justify-center text-black font-semibold text-sm">
         {percentHelper(completed)}%
       </div>
       <p className="text-center mt-2 text-sm text-zinc-500">
-        <span style={{ color: circularColor }}>● </span>  
+        <span style={{ color: circularColor }}>● </span>
         {description}
       </p>
     </div>

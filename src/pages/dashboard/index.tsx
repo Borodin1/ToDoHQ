@@ -19,7 +19,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col p-6">
-      <h2 className="text-4xl font-medium mb-6">
+      <h2 className="text-4xl font-medium mb-6 md:text-3xl max-sm:text-sm max-sm:font-bold">
         Welcome back, {firstName} {lastName}👋
       </h2>
       <TaskOverview />

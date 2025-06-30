@@ -18,7 +18,7 @@ export const TaskBoard: React.FC<IProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   return (
-    <div className="w-[466px] h-full flex flex-col p-3 border border-zinc-100 rounded-xl shadow-md bg-white">
+    <div className="w-[466px] h-full flex flex-col p-3 border border-zinc-100 rounded-xl shadow-md bg-white max-xl:w-full ">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
@@ -37,7 +37,7 @@ export const TaskBoard: React.FC<IProps> = ({
           <p className="text-[12px] text-gray-400 font-normal">Add Task</p>
         </div>
       </div>
-      <div className="">
+      <div>
         <div className="max-h-[750px] flex text-center flex-col gap-2 items-center overflow-auto">
           {todos && todos.length > 0 ? (
             [...todos]

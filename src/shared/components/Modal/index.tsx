@@ -31,7 +31,7 @@ export const Modal: React.FC<IModalProps> = ({ children, onClose }) => {
           className="fixed top-0 left-0 w-full h-full flex justify-center text-center items-center z-[1000] bg-gray-500/50 scroll-auto"
           onClick={onClose}>
           <div
-            className="bg-white p-5 w-[918px] h-[670px] overflow-y-auto shadow-2xl"
+            className="bg-white p-3 overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}>
             {children}
           </div>

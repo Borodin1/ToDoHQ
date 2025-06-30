@@ -44,7 +44,10 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
         title: data.title,
         description: data.description,
         priority: data.priority,
-        completed: data.completed !== undefined ? data.completed : task.completed || false
+        completed:
+          data.completed !== undefined
+            ? data.completed
+            : task.completed || false,
       };
       dispatch(updateTask({ id: task.id, todoData: updateData }));
     } else {
@@ -56,10 +59,9 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
     reset();
   };
 
-
   return (
     <Modal onClose={() => dispatch(isOpen())}>
-      <div className="p-8 text-left">
+      <div className="p-1 text-left">
         <div className="flex justify-between mb-3.5">
           <h3 className="text-base font-semibold underline decoration-[#F24E1E]">
             {mode === "create" ? "Create Todo" : "Edit Todo"}
@@ -70,7 +72,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
             Go Back
           </p>
         </div>
-        <div className="w-[810px] h-[500px] border-2 border-gray-300 p-3">
+        <div className="w-full h-full border-2 border-gray-300 p-3">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               type="text"
@@ -84,7 +86,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
 
             <div className="flex flex-col text-left my-3">
               <h4 className="text-sm font-semibold">Priority</h4>
-              <div className="flex justify-around w-[500px] items-stretch text-[#A1A3AB]">
+              <div className="flex justify-around w-[500px] items-stretch text-[#A1A3AB] max-sm:flex-col max-sm:w-full max-sm:items-center">
                 <Input
                   type="radio"
                   label="extreme"
@@ -112,7 +114,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
             <Input
               type="textarea"
               label="Task Description"
-              className="w-[500px] h-[180px] border-1 border-gray-400 rounded-[5px] p-2 text-start resize-none"
+              className="w-[500px] h-[180px] border-1 border-gray-400 rounded-[5px] p-2 text-start resize-none max-sm:w-full"
               placeholder="Start writing here..."
               {...register("description")}
             />
