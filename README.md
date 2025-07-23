@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# 🧠 ToDoHQ — Smart Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Build with Vite](https://img.shields.io/badge/Built%20with-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-Modern%20State%20Manager-764ABC?logo=redux&logoColor=white)](https://redux-toolkit.js.org/)
+[![GitHub](https://img.shields.io/badge/GitHub-@Borodin1-181717?logo=github)](https://github.com/Borodin1)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ToDoHQ is a modern task management application with an intuitive interface and advanced features like prioritization, deadlines, filtering, progress indicators, and much more.
 
-## Expanding the ESLint configuration
+![Preview](./public/titlescreen.png) <!-- Replace or add if you have an image -->
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Demo
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+> ⚙️ *Work in progress...*  
+> Demo will be available at: _(coming soon)_
+
+---
+
+## 🛠 Getting Started
+
+### 1. Clone the repository
+```
+git clone https://github.com/Borodin1/ToDoHQ.git
+cd ToDoHQ
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+npm install
+``` 
+### 3. Run development server
+```
+npm run dev
+```
+
+### 4. Build for production
+```
+npm run build
+```
+
+🔐 Authentication  
+The app uses JWT authentication. After registering or logging in:
+
+A JWT token is stored in localStorage
+
+Task management is available only for authenticated users
+
+
+🧑‍💻 Author  
+Alexander Borodin  
+Frontend Developer | React / TypeScript  
+[GitHub](https://github.com/Borodin1)
