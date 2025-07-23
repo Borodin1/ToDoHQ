@@ -17,8 +17,8 @@ export interface ITodo {
 }
 
 export interface ITodoFetch {
-  title: string;
-  description: string;
-  priority: "extreme" | "moderate" | "low";
-  completed: boolean;
+  title?: string;
+  description?: string;
+  priority?: "extreme" | "moderate" | "low";
+  completed?: boolean;
 }

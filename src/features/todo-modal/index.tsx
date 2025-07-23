@@ -1,63 +1,14 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React from "react";
 
 import { Modal } from "../../shared/components/Modal";
-import { isOpen } from "../../entities/todos/model/todosSlice";
 import { Button, Input } from "../../shared/components";
 // import { PickerDate } from "../../shared/components/PickerDate";
-import { createTask, updateTask } from "../../entities/todos/api/index";
-import { useAppDispatch } from "../../app/store";
-import { ITodoFetch } from "../../entities/todos/model/types";
-
-interface ITodoModal {
-  mode: "create" | "edit";
-  task?: {
-    id: number;
-    title: string;
-    description: string;
-    priority: string;
-    completed?: boolean;
-  };
-}
+import { ITodoModal } from "./types";
+import { useTodoModal } from "./useTodoModal";
 
 export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
-  const dispatch = useAppDispatch();
-
-  const { register, handleSubmit, reset, formState } = useForm<ITodoFetch>();
-
-  useEffect(() => {
-    if (mode === "edit" && task) {
-      reset({
-        title: task.title || "",
-        description: task.description || "",
-        completed: task.completed || false,
-        priority: ["extreme", "moderate", "low"].includes(task.priority)
-          ? (task.priority as "extreme" | "moderate" | "low")
-          : "low",
-      });
-    }
-  }, [mode, task, reset]);
-
-  const onSubmit = (data: ITodoFetch) => {
-    if (mode === "edit" && task?.id) {
-      const updateData = {
-        title: data.title,
-        description: data.description,
-        priority: data.priority,
-        completed:
-          data.completed !== undefined
-            ? data.completed
-            : task.completed || false,
-      };
-      dispatch(updateTask({ id: task.id, todoData: updateData }));
-    } else {
-      const newData = { ...data, completed: false };
-      dispatch(createTask(newData));
-    }
-    console.log(data);
-    dispatch(isOpen());
-    reset();
-  };
+  const { dispatch, isOpen, handleSubmit, onSubmit, register, formState } =
+    useTodoModal({ mode, task });
 
   return (
     <Modal onClose={() => dispatch(isOpen())}>
@@ -81,8 +32,6 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
               name="title"
               error={formState.errors.title?.message}
             />
-
-            {/* <PickerDate /> */}
 
             <div className="flex flex-col text-left my-3">
               <h4 className="text-sm font-semibold">Priority</h4>

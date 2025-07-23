@@ -20,3 +20,10 @@ export interface IAuthenticate {
   password?: string;
   confirmPassword?: string;
 }
+
+export interface IAuthUpdate {
+  firstName?: string;
+  lastName?: string;
+  username?: string;
+  email?: string;
+}

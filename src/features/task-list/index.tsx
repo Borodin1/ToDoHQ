@@ -30,7 +30,7 @@ export const TaskList: React.FC<ITaskList> = ({
     return (
       <div
         key={todo.id}
-        className="flex w-[400px] h-[166px] border-2 border-gray-300 rounded-xl p-2 text-center justify-between max-lg:w-full max-lg:justify-center">
+        className="flex w-[400px] h-[166px] gap-5 border-2 border-gray-300 rounded-xl p-2 text-center justify-between max-lg:w-full max-lg:justify-center">
         <div className="flex items-start ">
           <div
             className={`w-3 h-3 ${
@@ -53,8 +53,8 @@ export const TaskList: React.FC<ITaskList> = ({
               </div>
             </div>
             <div className="flex flex-row gap-3 justify-center max-lg:flex-col max-lg:gap-0">
-              <p className="text-[10px] capitalize">Priority:{todo.priority}</p>
-              <p className="text-[10px]">
+              <p className="text-[10px] capitalize">Priority: <span className={`${ todo.priority === 'extreme' ? 'text-[#F21E1E]' : todo.priority === 'moderate' ? 'text-[#42ADE2]': 'text-[#05A301]'}`}>{todo.priority}</span></p>
+              <p className="text-[10px] text-[#A1A3AB]">
                 Created on: {formattedDate(todo.createdAt)}
               </p>
             </div>
@@ -68,21 +68,20 @@ export const TaskList: React.FC<ITaskList> = ({
       <div className="w-full p-8 max-lg:p-3">
         <div className="flex justify-start max-lg:flex-col">
           <div className='max-sm:hidden'>
-            <CiImageOn size={200} />
+            <CiImageOn size={100} />
           </div>
-          <div className="flex justify-between w-full p-3">
+          <div className="flex flex-col-reverse justify-between w-full p-3">
             <div className="flex flex-col gap-3.5">
               <h3 className="text-2xl font-semibold">{todo?.title}</h3>
               <div className="flex flex-col gap-5 max-lg:gap-20">
-                <p className="text-[12px] capitalize">
-                  Priority:{todo?.priority}
-                </p>
+              <p className="text-[12px] capitalize">Priority: <span className={`${ todo.priority === 'extreme' ? 'text-[#F21E1E]' : todo.priority === 'moderate' ? 'text-[#42ADE2]': 'text-[#05A301]'}`}>{todo.priority}</span></p>
+
                 <p className="text-[10px] text-gray-400">
                   Created on: {formattedDate(todo?.createdAt || "")}
                 </p>
               </div>
             </div>
-            <div>
+            <div className='flex flex-col items-end'>
               <Link
                 to=".."
                 className="text-sm underline font-semibold max-lg:hidden">
@@ -91,10 +90,10 @@ export const TaskList: React.FC<ITaskList> = ({
             </div>
           </div>
         </div>
-        <div className="flex mt-14 min-h-[350px] p-3">
+        <div className="flex mt-2 min-h-[350px] p-3">
           <p className="text-lg text-gray-400">{todo?.description}</p>
         </div>
-        <div className="flex justify-end gap-6">
+        <div className="flex justify-end gap-2">
           <FaTrash
             className="border-2 bg-[#FF6767] rounded-lg p-1.5 cursor-pointer"
             size={35}

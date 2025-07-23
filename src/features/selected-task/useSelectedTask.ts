@@ -46,14 +46,13 @@ export const useSelectedTask = () => {
       toast.success(`You successfully completed the task-${id}.`);
     } else {
       navigate("/");
-
       toast.error("Something went wrong.");
     }
   };
 
   useEffect(() => {
     if (!task) {
-      navigate("/");
+    navigate("/my-tasks");
     }
   }, [task, navigate]);
 

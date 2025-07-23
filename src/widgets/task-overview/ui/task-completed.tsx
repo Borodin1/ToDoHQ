@@ -5,7 +5,7 @@ import { useTaskOverview } from "../useTaskOverview";
 export const TaskCompleted: React.FC = () => {
   const { todos, formattedDate } = useTaskOverview();
   return (
-    <div className="flex-1 p-6 border border-zinc-100 rounded-xl w-full shadow-md bg-white max-lg:justify-center">
+    <div className="p-6 border border-zinc-100 rounded-xl w-full shadow-md bg-white max-lg:justify-center">
       <div className="flex items-center">
         <img
           src={completedImg}
@@ -16,13 +16,14 @@ export const TaskCompleted: React.FC = () => {
           Completed Tasks
         </h3>
       </div>
-      <div className="flex justify-center flex-col overflow-auto gap-2 h-[500px] md:items-center">
+      <div className="flex justify-center flex-col pt-7 px-2  overflow-auto gap-2 h-[450px] md:items-center">
         {todos.filter((todo) => todo.completed).length > 0 ? (
           todos
             .filter((todo) => todo.completed)
             .map((todo) => (
               <TaskList
                 key={todo.id}
+                basePath="/tasks"
                 todo={todo}
                 formattedDate={formattedDate}
               />

@@ -4,7 +4,6 @@ import { TaskOverview } from "../../widgets/task-overview";
 
 export const Dashboard: React.FC = () => {
   const { firstName, lastName } = useAppSelector((state) => state.auth.user);
-  const { todos } = useAppSelector((state) => state.todos);
   const renderRef = useRef(true);
 
   useEffect(() => {
@@ -13,9 +12,7 @@ export const Dashboard: React.FC = () => {
       return;
     }
 
-    console.log("Todos was refreshing.");
-    
-  }, [todos]);
+  }, [firstName, lastName]);
 
   return (
     <div className="h-full flex flex-col p-6">

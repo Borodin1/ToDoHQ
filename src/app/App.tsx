@@ -8,6 +8,7 @@ import { ProtectedAuth } from "../features/protected-auth";
 import { TaskId } from '../pages/task-id';
 import { MyTasks } from '../pages/my-tasks';
 import { SelectedTask } from '../features/selected-task';
+import { SettingsPage } from '../pages/settings';
 
 export const App: React.FC = () => {
   return (
@@ -30,6 +31,8 @@ export const App: React.FC = () => {
 
 
           <Route path='tasks/task/:taskId' element={<TaskId/>}/>
+
+          <Route path='settings' element={<SettingsPage/>}/>
 
         
           {/* Not found page */}

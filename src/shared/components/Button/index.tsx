@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 interface ButtonProps {
   className?: string;
   title: string | IconType;
-  type?: "button" | "submit" | "reset"; // ✏️ добавили type
+  type?: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void; // ✏️ сделали onClick необязательным
 }
 

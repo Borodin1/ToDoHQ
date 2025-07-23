@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <div className="hidden sm:block bg-[#FF6767] min-h-screen w-[250px] text-white p-6 rounded-lg">
+      <div className="hidden sm:block bg-[#FF6767] min-h-screen w-[250px] text-white p-6 rounded-lg mt-5" >
         <div className="mb-6">
           <h2 className="text-[16px] font-bold">{`${user?.firstName} ${user?.lastName}`}</h2>
           <p className="text-xs opacity-80">{user?.email}</p>

@@ -18,6 +18,8 @@ type InputProps =
       })
   | (CommonProps &
       React.TextareaHTMLAttributes<HTMLTextAreaElement> & { type: "textarea" });
+
+      
 export const Input = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   InputProps

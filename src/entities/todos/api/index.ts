@@ -3,12 +3,12 @@ import axios, { isAxiosError } from "axios";
 import { ITodoFetch } from "../model/types";
 
 const url = import.meta.env.VITE_API_URL;
-const token = localStorage.getItem("token");
 
 export const fetchTodos = createAsyncThunk(
   "todos/fetchAll",
   async (_, thunkAPI) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(`${url}/todos`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,6 +34,8 @@ export const createTask = createAsyncThunk(
   "todos/createTodo",
   async (todoData: ITodoFetch, thunkAPI) => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.post(
         `${url}/todos`,
         { data: todoData },
@@ -60,9 +62,11 @@ export const updateTask = createAsyncThunk(
   "todos/updateTask",
   async ({ id, todoData }: { id: number; todoData: ITodoFetch }, thunkAPI) => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.put(
         `${url}/todos/${id}`,
-        { data:todoData },
+        { data: todoData },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,8 +74,6 @@ export const updateTask = createAsyncThunk(
           },
         }
       );
-      console.log('data:',todoData)
-      console.log('response.data',response.data)
       return response.data;
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -85,11 +87,12 @@ export const updateTask = createAsyncThunk(
   }
 );
 
-
 export const deleteTask = createAsyncThunk(
   "todos/deleteTask",
   async (id: number, thunkAPI) => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.delete(`${url}/todos/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,3 +1,4 @@
+import { fetchUpdateUser } from "./../api/index";
 import { createSlice } from "@reduxjs/toolkit";
 import { IAuthState } from "./types";
 import { fetchAuth } from "../api";
@@ -58,8 +59,27 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
     });
+
+    builder.addCase(fetchUpdateUser.pending, (state) => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+
+    builder.addCase(fetchUpdateUser.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      if (payload && typeof payload === "object") {
+        state.user = {
+          ...state.user,
+          ...payload,
+        };
+      }
+    });
+    builder.addCase(fetchUpdateUser.rejected, (state) => {
+      state.isLoading = false;
+      state.isError = true;
+    });
   },
 });
 
-export const {logout} = authSlice.actions
+export const { logout } = authSlice.actions;
 export const authReducer = authSlice.reducer;
