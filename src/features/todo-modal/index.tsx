@@ -70,7 +70,7 @@ export const TodoModal: React.FC<ITodoModal> = ({ mode, task }) => {
             <Button
               title="Done"
               type="submit"
-              className="w-[90px] h-[34px] my-3 bg-[#FF9090] rounded-[5px] text-white"
+              className="w-[90px] h-[34px] my-3 dark:bg-[#FF6A6A] bg-[#FF9090] rounded-[5px] text-white transition-transform duration-700 ease-in-out hover:scale-110"
               onClick={handleSubmit(onSubmit)}
             />
           </form>

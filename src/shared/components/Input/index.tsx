@@ -43,7 +43,7 @@ export const Input = forwardRef<
         className={
           className
             ? className
-            : "pl-8  h-[60px] rounded-[5px] border-1 border-gray-400 max-[1450px]:w-[500px] max-[1150px]:w-[350px] max-[400px]:w-[250px] max-[400px]:h-[25px]"
+            : "pl-8  h-[60px] dark:bg-[#2A2A3B] dark:border-[#3A3A4D] dark:text-[#ffff] dark:placeholder-[#AAAAAA] dark:focus:ring-2 dark:focus:ring-[#FF6A6A] rounded-[5px] border-1 border-gray-400 max-[1450px]:w-[500px] max-[1150px]:w-[350px] max-[400px]:w-[250px] max-[400px]:h-[25px]"
         }
         type={type}
         name={name}

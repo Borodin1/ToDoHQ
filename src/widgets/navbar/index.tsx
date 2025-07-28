@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
           <li
             key={id}
             className={`flex items-center gap-3 p-3 ${
-              isActive ? "bg-white text-[#FF6767] rounded-2xl" : ""
+              isActive ? "dark:bg-[#2C2C3E] bg-white text-[#FF6767] rounded-2xl" : ""
             }`}
           >
             {path ? (
@@ -35,7 +35,7 @@ export const Navbar: React.FC = () => {
                 }}
                 className="flex items-center gap-3 cursor-pointer mt-10"
               >
-                <Icon className={isActive ? "fill-[#FF6767]" : ""} />
+                <Icon className={isActive ? "dark:fill-[#FF6A6A] fill-[#FF6767]" : ""} />
                 <span className="max-sm:hidden">{name}</span>
               </div>
             )}
@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <div className="hidden sm:block bg-[#FF6767] min-h-screen w-[250px] text-white p-6 rounded-lg mt-5" >
+      <div className="hidden sm:block dark:bg-[#1E1E2F] bg-[#FF6767] min-h-screen w-[250px] text-white p-6 rounded-lg mt-5" >
         <div className="mb-6">
           <h2 className="text-[16px] font-bold">{`${user?.firstName} ${user?.lastName}`}</h2>
           <p className="text-xs opacity-80">{user?.email}</p>

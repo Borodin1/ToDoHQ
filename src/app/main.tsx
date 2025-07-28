@@ -10,7 +10,7 @@ import { store } from './store.ts';
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='ToDoHQ'>
     <Provider store={store}>
     <App />
     </Provider>
